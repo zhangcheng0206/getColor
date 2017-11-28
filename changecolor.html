@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	#sec{margin:20px auto;width:400px;}
+	.box{width:300px;height:300px;border-radius: 150px;background-color: #000;}
+	.group{margin:60px;}
+	.chh{background-color: #22b88a;}
+</style>
+<body>
+<section id="sec">
+	<div class="box chh"></div>
+	<div class="group"><input type="range" value="0" step="1" min="0" max="255"><span></span></div>
+	<div class="group"><input type="range" value="0" step="1" min="0" max="255"><span></span></div>
+	<div class="group"><input type="range" value="0" step="1" min="0" max="255"><span></span></div>
+</section>
+<script>
+	var oBox=document.querySelector('.box');
+	var oRange=document.getElementsByTagName('input');
+	console.log(oBox,oRange)
+	oRange[0].oninput=function(){
+		var span = this.nextElementSibling||this.nextSibling;
+		console.log(span);
+		span.innerHTML=oRange[0].value;
+		oBox.style.backgroundColor='rgb('+oRange[0].value+','+oRange[1].value+','+oRange[2].value+')';
+	}
+	oRange[1].oninput=function(){
+		var span = this.nextElementSibling||this.nextSibling;
+		console.log(span);
+		span.innerHTML=this.value;
+		oBox.style.backgroundColor='rgb('+oRange[0].value+','+oRange[1].value+','+oRange[2].value+')';
+	}
+	oRange[2].oninput=function(){
+		var span = this.nextElementSibling||this.nextSibling;
+		console.log(span);
+		span.innerHTML=this.value;
+		oBox.style.backgroundColor='rgb('+oRange[0].value+','+oRange[1].value+','+oRange[2].value+')';
+	}
+	oBox.onclick=function(){
+		this.classList.toggle('chh');
+	}
+</script>
+</body>
+</html>
